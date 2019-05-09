@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery Show Hide Elements Using Select Box</title>
+<style type="text/css">
+    .box{
+        color: #fff;
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+    }
+    .male{ background: #ff0000; font-size:36px; font-style:italic}
+    .female{ background: #228B22; font-size:52px;font-style:italic }
+    
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
+</script>
+</head>
+<body>
+    <div>
+        <select>
+            <option>Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            
+        </select>
+    </div>
+    <div class="male box">You have selected Gender Male</div>
+    <div class="female box">You have selected Gender Female</div>
+    
+</body>
+</html>                            
